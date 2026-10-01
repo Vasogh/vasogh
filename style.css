@@ -7,3 +7,32 @@
 @media(hover:hover) and (pointer:fine){.social:hover .icon svg{animation:icon-sway 1.25s ease-in-out infinite}}
 @keyframes icon-sway{0%,100%{transform:rotate(0) translateY(0)}25%{transform:rotate(-10deg) translateY(-2px)}75%{transform:rotate(10deg) translateY(-2px)}}
 @media(prefers-reduced-motion:reduce){.icon svg{animation:none!important}}
+
+/* Social feeds inside lightweight CSS phone frames. */
+main{max-width:960px;width:min(100% - 40px,960px);padding-bottom:48px}
+.feeds{margin-top:80px}.eyebrow{font-size:.69rem;letter-spacing:.23em;font-weight:700;color:#e1edf4;margin:0 0 14px}
+.feeds h2{font-size:clamp(1.65rem,3.3vw,2.4rem);letter-spacing:-.035em;font-weight:700;margin:0 0 13px;text-wrap:balance}
+.feeds-intro{font-size:1rem;line-height:1.6;color:#f0f6fc;margin:0 auto 35px;max-width:480px;text-wrap:balance}
+.phones{display:grid;grid-template-columns:repeat(2,minmax(0,360px));gap:44px;justify-content:center;align-items:start}
+.phone-card{min-width:0}.phone{position:relative;border:2px solid #718394;border-radius:46px;padding:8px;background:#18232d;box-shadow:0 24px 60px #061c3259,inset 0 0 0 2px #ffffff12;text-align:left;isolation:isolate}
+.phone::before{content:"";position:absolute;width:3px;height:47px;right:-4px;top:131px;background:#83909b;border-radius:0 3px 3px 0}
+.phone-hardware{height:35px;border-radius:35px 35px 0 0;background:#f9fbfd;display:flex;align-items:center;justify-content:center}
+.camera{width:76px;height:19px;background:#18232d;border-radius:20px;position:relative}
+.camera::after{content:"";position:absolute;right:9px;top:6px;width:7px;height:7px;border-radius:50%;background:#334b63;box-shadow:inset 0 0 0 2px #263846}
+.phone-header{display:flex;align-items:center;gap:10px;padding:12px;background:#f9fbfd;border-bottom:1px solid #e1e8ef;color:#183344}
+.phone-header img{object-fit:contain;background:#eaf1f6;border-radius:50%;padding:3px;width:42px;height:42px;flex-shrink:0}
+.phone-header h3{font-size:.95rem;letter-spacing:-.025em;margin:0 0 4px}.phone-header div>span{font-size:.75rem;color:#63798b}
+.platform-mark{width:29px;height:29px;display:grid;place-items:center;border-radius:50%;margin-left:auto;color:white;flex-shrink:0;font-size:.7rem;font-weight:700}
+.vk-mark{background:#0077ff}.tg-mark{background:#229ed9;font-size:1rem}
+.phone-screen{height:490px;overflow:auto;overscroll-behavior:contain;background:#edf2f6;color:#203b4e;scrollbar-width:thin;scrollbar-color:#a2b6c6 transparent}
+.telegram-screen{padding:10px 8px;background:linear-gradient(145deg,#e4f0ee,#e7eff7)}
+.vk-screen{padding:0}.feed-status{font-size:.85rem;line-height:1.65;text-align:center;padding:36px 18px;margin:0;color:#506a7b}
+.feed-status[hidden]{display:none}.feed-fallback{display:block;text-align:center;padding:18px 8px;font-size:.78rem;color:#226999;line-height:1.5}
+.telegram-post{margin:0 0 12px;min-height:80px}.telegram-post iframe{max-width:100%}.post-link{display:block;font-size:.73rem;padding:6px 10px;color:#246c94;text-decoration:none}
+.phone-cta{display:flex;justify-content:space-between;align-items:center;padding:17px 18px;color:white;font-size:.87rem;font-weight:600;text-decoration:none;background:#0077ff}
+.tg-cta{background:#168bbd}.phone-cta:hover{filter:brightness(1.08)}
+.phone-bottom{background:#f9fbfd;height:25px;border-radius:0 0 35px 35px;display:grid;place-items:center}.phone-bottom span{width:96px;height:4px;border-radius:4px;background:#263e50}
+.phone-caption{font-size:.78rem;line-height:1.6;color:#edf5fc;margin:19px 0 0}
+.phone-screen:focus-visible,.phone a:focus-visible{outline:3px solid #f5b64d;outline-offset:-3px}
+@media(max-width:740px){.phones{grid-template-columns:minmax(0,360px);gap:34px}.feeds{margin-top:60px}.feeds-intro{max-width:320px}.phone-screen{height:450px}}
+@media(max-width:380px){main{width:calc(100% - 28px)}.phone{border-radius:39px;padding:6px}.phone-header{padding:11px 8px;gap:8px}.phone-header h3{font-size:.86rem}.phone-screen{height:420px}.telegram-screen{padding:8px 4px}.phone-cta{padding:16px 12px;font-size:.81rem}}
