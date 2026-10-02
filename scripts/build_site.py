@@ -9,7 +9,7 @@ DEST = ROOT / '_site'
 if DEST.exists():
     shutil.rmtree(DEST)
 DEST.mkdir()
-for name in ('index.html', 'style.css', 'feeds.js', 'season.js', 'robots.txt', 'sitemap.xml', 'CNAME', '.nojekyll'):
+for name in ('index.html', 'style.css', 'feeds.js', 'season.js', 'season-motion.js', 'robots.txt', 'sitemap.xml', 'CNAME', '.nojekyll'):
     source = ROOT / name
     if source.exists():
         shutil.copy2(source, DEST / name)

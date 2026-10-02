@@ -68,3 +68,8 @@ main{padding-top:36px}
 @media(max-width:600px){main{padding-top:24px}.hero{padding:0 0 0}.hero-kicker{font-size:.59rem;letter-spacing:.17em;margin-bottom:16px}.hero .logo{width:120px;margin-bottom:17px}.hero h1{font-size:clamp(1.8rem,7.5vw,2.7rem);margin-bottom:17px}.hero .description{font-size:1rem;line-height:1.6;max-width:370px}.desktop-break{display:none}.hero .divider{margin:20px auto 17px}.hero h2{margin-bottom:18px;font-size:.76rem}.hero nav{gap:6px;max-width:348px}.hero .icon{width:64px;height:64px}.hero .social{font-size:.78rem;gap:10px}.about{padding:25px 22px;margin-top:44px}.about p:not(.eyebrow){font-size:.9rem}}
 @media(max-width:350px){.hero .social{font-size:.7rem}.hero .icon{width:60px;height:60px}.hero .logo{width:105px}}
 @media(max-height:620px) and (min-width:601px){main{padding-top:20px}.hero .logo{width:90px;margin-bottom:12px}.hero-kicker{margin-bottom:12px}.hero h1{font-size:2.8rem;margin-bottom:12px}}
+
+/* Atmospheric layer sits behind all readable content and never intercepts input. */
+.season-atmosphere{position:fixed;inset:0;z-index:-1;pointer-events:none}
+.season-atmosphere[hidden]{display:none}
+@media(prefers-reduced-motion:reduce){.season-atmosphere{display:none}}
