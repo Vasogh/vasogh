@@ -9,10 +9,15 @@ DEST = ROOT / '_site'
 if DEST.exists():
     shutil.rmtree(DEST)
 DEST.mkdir()
-for name in ('index.html', 'style.css', 'feeds.js', 'CNAME', '.nojekyll'):
+for name in ('index.html', 'style.css', 'feeds.js', 'season.js', 'robots.txt', 'sitemap.xml', 'CNAME', '.nojekyll'):
     source = ROOT / name
     if source.exists():
         shutil.copy2(source, DEST / name)
+# Verification files are public and may be added later by the site owner.
+for pattern in ('yandex_*.html', 'google*.html'):
+    for source in ROOT.glob(pattern):
+        if source.is_file():
+            shutil.copy2(source, DEST / source.name)
 shutil.copytree(ROOT / 'assets', DEST / 'assets')
 (DEST / 'data').mkdir()
 shutil.copy2(ROOT / 'data/telegram.json', DEST / 'data/telegram.json')
