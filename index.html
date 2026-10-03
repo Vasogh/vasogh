@@ -51,4 +51,53 @@
   </div>
   <noscript><p>Для просмотра публикаций включите JavaScript или перейдите в сообщества по ссылкам выше.</p></noscript>
 </section>
-<section class="about" aria-labelledby="about-heading"><p class="eyebrow">О ГОРОДЕ И ДЛЯ ГОРОДА</p><h2 id="about-heading">Бахчисарай: новости и объявления</h2><p>Бахчисарай.NET — городской портал о жизни Бахчисарая, Бахчисарайского района и Крыма. В наших сообществах жители делятся новостями, размещают объявления и обсуждают события города и района.</p><p>Свежие публикации ВКонтакте и Telegram собраны в лентах выше. Читать, комментировать и общаться можно в самих сообществах.</p></section></main><footer><span>© Бахчисарай.NET</span></footer><script src="feeds.js?v=5" defer></script><script src="season-motion.js?v=7" defer></script></body></html>
+<section class="about" aria-labelledby="about-heading"><p class="eyebrow">О ГОРОДЕ И ДЛЯ ГОРОДА</p><h2 id="about-heading">Бахчисарай: новости и объявления</h2><p>Бахчисарай.NET — городской портал о жизни Бахчисарая, Бахчисарайского района и Крыма. В наших сообществах жители делятся новостями, размещают объявления и обсуждают события города и района.</p><p>Свежие публикации ВКонтакте и Telegram собраны в лентах выше. Читать, комментировать и общаться можно в самих сообществах.</p></section></main><footer><span>© Бахчисарай.NET</span></footer><script src="feeds.js?v=5" defer></script><script src="season-motion.js?v=7" defer></script>
+<!-- Bahchisarai.NET: Metrika goals -->
+<script>
+(() => {
+  'use strict';
+  if (window.bahnetGoalsInstalled) return;
+  window.bahnetGoalsInstalled = true;
+  const counter = 77580622;
+  function goal(name) {
+    if (typeof window.ym !== 'function') return false;
+    try { window.ym(counter, 'reachGoal', name); return true; }
+    catch (_) { return false; }
+  }
+  function trackLink(event) {
+    if (!event.isTrusted) return;
+    if (event.type === 'auxclick' && event.button !== 1) return;
+    if (event.type === 'click' && event.button !== 0) return;
+    const link = event.target.closest && event.target.closest('a[href]');
+    if (!link) return;
+    if (link.matches('.social.vk')) { goal('social_vk_click'); return; }
+    if (link.matches('.social.telegram')) { goal('social_tg_click'); return; }
+    if (link.matches('.social.ok')) { goal('social_ok_click'); return; }
+    const card = link.closest('.phone-card');
+    if (!card) return;
+    const url = new URL(link.href, document.baseURI);
+    if (card.querySelector('#vk-title') && ['vk.ru', 'vk.com'].includes(url.hostname)) {
+      goal('phone_vk_click');
+    } else if (card.querySelector('#tg-title') && url.hostname === 't.me') {
+      goal('phone_tg_click');
+    }
+  }
+  document.addEventListener('click', trackLink);
+  document.addEventListener('auxclick', trackLink);
+  // Measure only the site's Telegram scroll container, never iframe contents.
+  // One goal after its position changes by >= 80 CSS pixels, per page load.
+  const screen = document.querySelector('.telegram-screen');
+  if (screen) {
+    const initialTop = screen.scrollTop;
+    let sent = false;
+    screen.addEventListener('scroll', event => {
+      if (sent || !event.isTrusted || document.visibilityState !== 'visible') return;
+      if (!screen.querySelector('.telegram-post')) return;
+      if (screen.scrollHeight <= screen.clientHeight) return;
+      if (Math.abs(screen.scrollTop - initialTop) < 80) return;
+      sent = goal('phone_tg_scroll');
+    }, {passive: true});
+  }
+})();
+</script>
+</body></html>
